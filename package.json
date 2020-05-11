@@ -1,0 +1,23 @@
+{
+  "name": "frontend-project-lvl2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "commander": "^5.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kob0/frontend-project-lvl2.git"
+  },
+  "author": "andrew m",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kob0/frontend-project-lvl2/issues"
+  },
+  "homepage": "https://github.com/Kob0/frontend-project-lvl2#readme"
+}
