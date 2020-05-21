@@ -22,7 +22,10 @@
     "jest-cli": "^26.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-node": "babel-node",    
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",    
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
