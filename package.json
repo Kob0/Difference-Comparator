@@ -18,9 +18,7 @@
     "jest": "^26.0.1",
     "jest-cli": "^26.0.1"
   },
-  "scripts": {
-
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kob0/frontend-project-lvl2.git"
