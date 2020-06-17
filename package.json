@@ -8,7 +8,8 @@
     "gendiff": "bin/gendiff.js"
   },
   "dependencies": {
-    "commander": "^5.1.0"
+    "commander": "^5.1.0",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "eslint": "^7.0.0",
