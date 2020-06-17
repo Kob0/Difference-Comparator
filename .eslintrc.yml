@@ -1,6 +1,5 @@
 plugins:
   - jest
-  - babel
 extends:
   - 'airbnb-base'
 env:
