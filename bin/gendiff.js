@@ -3,7 +3,7 @@
 import commander from 'commander';
 import getDiff from '../src/index.js';
 
-const program = commander;
+const program = commander.createCommand();
 
 program
   .version('0.0.1')

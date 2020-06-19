@@ -15,8 +15,8 @@ const getCorrectPathToFile = (pathToFile) => {
 };
 
 const getDiff = (pathToFile, pathToFile2) => {
-  const file = fs.readFileSync(getCorrectPathToFile(pathToFile));
-  const file2 = fs.readFileSync(getCorrectPathToFile(pathToFile2));
+  const file = fs.readFileSync(getCorrectPathToFile(pathToFile), 'utf8');
+  const file2 = fs.readFileSync(getCorrectPathToFile(pathToFile2), 'utf8');
 
   const obj = JSON.parse(file);
   const obj2 = JSON.parse(file2);
@@ -41,7 +41,10 @@ const getDiff = (pathToFile, pathToFile2) => {
   }
   result.push('}');
 
-  return result.join('\n');
+  const diff = result.join('\n');
+  console.log(diff);
+
+  return diff;
 };
 
 export default getDiff;
