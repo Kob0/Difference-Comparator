@@ -10,10 +10,8 @@ program
   .description('Compares two configuration files and shows a difference.')
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format [type]', 'output format')
-  .action(() => {
-    genDiff('src/before.json', 'src/after.json');
+  .action((filepath1, filepath2) => {
+    genDiff(filepath1, filepath2);
   });
-  
-program.parse(process.argv);
 
-genDiff('src/before.json', 'src/after.json');
+program.parse(process.argv);
