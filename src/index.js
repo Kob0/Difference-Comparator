@@ -23,7 +23,7 @@ const getDiff = (pathToFile, pathToFile2) => {
 
   const keys = _.uniq([...Object.keys(obj), ...Object.keys(obj2)]);
 
-  const result = ['{\n'];
+  const result = ['{'];
 
   for (let i = 0; i < keys.length; i += 1) {
     if (_.has(obj2, keys[i]) && _.has(obj, keys[i])) {
