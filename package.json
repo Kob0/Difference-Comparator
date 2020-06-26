@@ -25,6 +25,7 @@
     "url": "git+https://github.com/Kob0/frontend-project-lvl2.git"
   },
   "dependencies": {
+    "@jest/globals": "^26.0.1",
     "commander": "^5.1.0",
     "lodash": "^4.17.15"
   },
