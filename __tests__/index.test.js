@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { test, expect } from '@jest/globals';
 import getDiff from '../src/index.js';
 
