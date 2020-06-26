@@ -17,7 +17,7 @@ beforeEach(() => {
 });
 
 test('getDiff for json', () => {
-  dirname = `${process.cwd()}/__fixtures__`;
+  dirname = `${process.cwd()}/__fixtures__/`;
   const filepath1 = `${dirname}before.json`;
   const filepath2 = `${dirname}after.json`;
   expect(getDiff(filepath1, filepath2)).toEqual(result);
