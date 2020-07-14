@@ -1,6 +1,7 @@
-import path from 'path';
 import fs from 'fs';
 import _ from 'lodash';
+import path from 'path';
+import parseFile from './parsers';
 
 const getCorrectPathToFile = (pathToFile) => {
   const currentDirectory = process.cwd();
@@ -18,8 +19,8 @@ const getDiff = (pathToFile, pathToFile2) => {
   const file = fs.readFileSync(getCorrectPathToFile(pathToFile), 'utf8');
   const file2 = fs.readFileSync(getCorrectPathToFile(pathToFile2), 'utf8');
 
-  const obj = JSON.parse(file);
-  const obj2 = JSON.parse(file2);
+  const obj = parseFile(file);
+  const obj2 = parseFile(file2);
 
   const keys = _.uniq([...Object.keys(obj), ...Object.keys(obj2)]);
 
