@@ -17,9 +17,16 @@ beforeEach(() => {
     '}'].join('\n');
 });
 
-test('getDiff for json', () => {
+test('getting diffs from two yaml files', () => {
   dirname = `${process.cwd()}/__fixtures__/`;
   const filepath1 = `${dirname}before.json`;
   const filepath2 = `${dirname}after.json`;
+  expect(getDiff(filepath1, filepath2)).toEqual(result);
+});
+
+test('getting diffs from two yaml files', () => {
+  dirname = `${process.cwd()}/__fixtures__/`;
+  const filepath1 = `${dirname}before.yml`;
+  const filepath2 = `${dirname}after.yml`;
   expect(getDiff(filepath1, filepath2)).toEqual(result);
 });
