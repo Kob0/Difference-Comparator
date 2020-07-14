@@ -1,7 +1,7 @@
 import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
-import parseFile from './parsers';
+import parseFile from './parsers.js';
 
 const getCorrectPathToFile = (pathToFile) => {
   const currentDirectory = process.cwd();
