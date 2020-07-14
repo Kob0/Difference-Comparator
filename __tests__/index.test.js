@@ -17,7 +17,7 @@ beforeEach(() => {
     '}'].join('\n');
 });
 
-test('getting diffs from two yaml files', () => {
+test('getting diffs from two json files', () => {
   dirname = `${process.cwd()}/__fixtures__/`;
   const filepath1 = `${dirname}before.json`;
   const filepath2 = `${dirname}after.json`;
