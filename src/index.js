@@ -1,6 +1,6 @@
-import path from 'path';
 import fs from 'fs';
 import _ from 'lodash';
+import path from 'path';
 
 const getCorrectPathToFile = (pathToFile) => {
   const currentDirectory = process.cwd();
