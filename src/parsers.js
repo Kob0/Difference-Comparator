@@ -4,9 +4,9 @@ import yaml from 'js-yaml';
 
 const getFullPath = (filePath) => {
   const currentDir = process.cwd();
-  const fullDir = path.resolve(currentDir, filePath);
+  const fullPath = path.resolve(currentDir, filePath);
 
-  return fullDir;
+  return fullPath;
 };
 
 const parseFile = (filePath) => {
