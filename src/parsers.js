@@ -2,27 +2,23 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 
-const getCorrectPathToFile = (pathToFile) => {
-  const currentDirectory = process.cwd();
-  let correctPath;
-  if (!currentDirectory.includes(pathToFile)) {
-    correctPath = path.resolve(currentDirectory, pathToFile);
-  } else {
-    correctPath = pathToFile;
-  }
+const getFullPath = (filePath) => {
+  const currentDir = process.cwd();
+  const fullDir = path.resolve(currentDir, filePath);
 
-  return correctPath;
+  return fullDir;
 };
 
 const parseFile = (filePath) => {
-  const data = fs.readFileSync(getCorrectPathToFile(filePath), 'utf8');
-  const format = path.extname(data).substring(1);
+  const pathToFile = getFullPath(filePath);
+  const data = fs.readFileSync(pathToFile, 'utf8');
+  const format = path.extname(pathToFile);
 
   let parse;
 
-  if (format === 'json') {
+  if (format === '.json') {
     parse = JSON.parse;
-  } else if (format === 'yml') {
+  } else if (format === '.yml') {
     parse = yaml.safeLoad;
   }
 
