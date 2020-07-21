@@ -25,17 +25,17 @@
     "url": "git+https://github.com/Kob0/frontend-project-lvl2.git"
   },
   "dependencies": {
-    "@jest/globals": "^26.0.1",
+    "@jest/globals": "^26.1.0",
     "commander": "^5.1.0",
     "js-yaml": "^3.14.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.19"
   },
   "devDependencies": {
-    "eslint": "^7.0.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jest": "^23.13.2",
-    "jest": "^26.0.1",
-    "jest-cli": "^26.0.1"
+    "eslint": "^7.5.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.18.0",
+    "jest": "^26.1.0",
+    "jest-cli": "^26.1.0"
   }
 }
