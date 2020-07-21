@@ -25,7 +25,6 @@ test('getting diffs from two json files', () => {
   expect(getDiff(filepath1, filepath2)).toEqual(result);
 });
 
-
 test('getting diffs from two yaml files', () => {
   const filepath1 = `${dirname}before.yml`;
   const filepath2 = `${dirname}after.yml`;
