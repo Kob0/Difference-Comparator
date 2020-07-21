@@ -1,25 +1,9 @@
-import path from 'path';
-import fs from 'fs';
 import _ from 'lodash';
-
-const getCorrectPathToFile = (pathToFile) => {
-  const currentDirectory = process.cwd();
-  let correctPath;
-  if (!currentDirectory.includes(pathToFile)) {
-    correctPath = path.resolve(currentDirectory, pathToFile);
-  } else {
-    correctPath = pathToFile;
-  }
-
-  return correctPath;
-};
+import parseFile from './parsers.js';
 
 const getDiff = (pathToFile, pathToFile2) => {
-  const file = fs.readFileSync(getCorrectPathToFile(pathToFile), 'utf8');
-  const file2 = fs.readFileSync(getCorrectPathToFile(pathToFile2), 'utf8');
-
-  const obj = JSON.parse(file);
-  const obj2 = JSON.parse(file2);
+  const obj = parseFile(pathToFile);
+  const obj2 = parseFile(pathToFile2);
 
   const keys = _.uniq([...Object.keys(obj), ...Object.keys(obj2)]);
 
