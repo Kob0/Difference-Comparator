@@ -1,9 +1,12 @@
 /* eslint-disable no-undef */
 import { test, expect } from '@jest/globals';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import getDiff from '../src/index.js';
 
-let result;
-let dirname;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
 beforeEach(() => {
   result = [
@@ -15,18 +18,16 @@ beforeEach(() => {
     '  - follow: false',
     '  + verbose: true',
     '}'].join('\n');
-
-  dirname = `${process.cwd()}/__fixtures__/`;
 });
 
 test('getting diffs from two json files', () => {
-  const filepath1 = `${dirname}before.json`;
-  const filepath2 = `${dirname}after.json`;
-  expect(getDiff(filepath1, filepath2)).toEqual(result);
+  const jsonPath1 = getFixturePath('before.json');
+  const jsonPath2 = getFixturePath('after.json');
+  expect(getDiff(jsonPath1, jsonPath2)).toEqual(result);
 });
 
 test('getting diffs from two yaml files', () => {
-  const filepath1 = `${dirname}before.yml`;
-  const filepath2 = `${dirname}after.yml`;
-  expect(getDiff(filepath1, filepath2)).toEqual(result);
+  const yamlPath1 = getFixturePath('before.json');
+  const yamlPath2 = getFixturePath('after.json');
+  expect(getDiff(yamlPath1, yamlPath2)).toEqual(result);
 });
