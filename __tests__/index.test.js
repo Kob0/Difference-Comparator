@@ -22,14 +22,20 @@ beforeEach(() => {
     '}'].join('\n');
 });
 
-test('getting diffs from two json files', () => {
+test('getDiff for json files', () => {
   const jsonPath1 = getFixturePath('before.json');
   const jsonPath2 = getFixturePath('after.json');
   expect(getDiff(jsonPath1, jsonPath2)).toEqual(result);
 });
 
-test('getting diffs from two yaml files', () => {
-  const yamlPath1 = getFixturePath('before.json');
-  const yamlPath2 = getFixturePath('after.json');
+test('getDiff for yaml files', () => {
+  const yamlPath1 = getFixturePath('before.yml');
+  const yamlPath2 = getFixturePath('after.yml');
   expect(getDiff(yamlPath1, yamlPath2)).toEqual(result);
+});
+
+test('getDiff for ini files', () => {
+  const iniPath1 = getFixturePath('before.ini');
+  const iniPath2 = getFixturePath('after.ini');
+  expect(getDiff(iniPath1, iniPath2)).toEqual(result);
 });
