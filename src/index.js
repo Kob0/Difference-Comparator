@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import parseFile from './parsers.js';
 
-export default (pathToFile, pathToFile2) => {
+const getDiff = (pathToFile, pathToFile2) => {
   const obj = parseFile(pathToFile);
   const obj2 = parseFile(pathToFile2);
 
@@ -26,7 +26,7 @@ export default (pathToFile, pathToFile2) => {
   result.push('}');
 
   const diff = result.join('\n');
-  console.log(diff);
 
   return diff;
 };
+export default getDiff;
