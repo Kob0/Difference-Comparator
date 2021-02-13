@@ -23,19 +23,19 @@ beforeEach(() => {
 });
 
 test('getDiff for json files', () => {
-  const jsonPath1 = getFixturePath('before.json');
-  const jsonPath2 = getFixturePath('after.json');
+  const jsonPath1 = getFixturePath('file1.json');
+  const jsonPath2 = getFixturePath('file2.json');
   expect(getDiff(jsonPath1, jsonPath2)).toEqual(result);
 });
 
 test('getDiff for yaml files', () => {
-  const yamlPath1 = getFixturePath('before.yml');
-  const yamlPath2 = getFixturePath('after.yml');
+  const yamlPath1 = getFixturePath('file1.yml');
+  const yamlPath2 = getFixturePath('file2.yml');
   expect(getDiff(yamlPath1, yamlPath2)).toEqual(result);
 });
 
 test('getDiff for ini files', () => {
-  const iniPath1 = getFixturePath('before.ini');
-  const iniPath2 = getFixturePath('after.ini');
+  const iniPath1 = getFixturePath('file1.ini');
+  const iniPath2 = getFixturePath('file2.ini');
   expect(getDiff(iniPath1, iniPath2)).toEqual(result);
 });
