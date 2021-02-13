@@ -14,7 +14,7 @@
   },
   "type": "module",
   "scripts": {
-    "test": "npx -n --experimental-vm-modules jest"
+    "test": "npx jest"
   },
   "jest": {
     "testEnvironment": "node",
