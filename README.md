@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Frontend project lvl2
 [![Maintainability](https://api.codeclimate.com/v1/badges/2b18d18d92f206779782/maintainability)](https://codeclimate.com/github/Kob0/frontend-project-lvl2/maintainability)
 
@@ -14,3 +15,7 @@ To see difference of two 'yaml' files - just type in console **gendiff [yaml-pat
 To see difference of two 'ini' files - just type in console **gendiff [ini-path1] [ini-path2]**!
 
 [![asciicast](https://asciinema.org/a/VFqSrugGebHMPQIJolhwTE5hM.svg)](https://asciinema.org/a/VFqSrugGebHMPQIJolhwTE5hM)
+=======
+### Hexlet tests and linter status:
+[![Actions Status](https://github.com/Kob0/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Kob0/frontend-project-lvl2/actions)
+>>>>>>> 11b70c02d7d1d5e7f478cc870310fe13d01cb478
