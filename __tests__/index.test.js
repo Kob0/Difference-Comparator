@@ -12,6 +12,8 @@ const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8'
 const cases = [
   ['json', 'stylish', 'expectedStylish.txt'],
   ['yml', 'stylish', 'expectedStylish.txt'],
+  ['json', 'plain', 'expectedPlain.txt'],
+  ['yml', 'plain', 'expectedPlain.txt'],
 ];
 
 describe('test genDiff, each case in order', () => {
