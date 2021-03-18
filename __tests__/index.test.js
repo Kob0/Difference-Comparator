@@ -14,11 +14,13 @@ const cases = [
   ['yml', 'stylish', 'expectedStylish.txt'],
   ['json', 'plain', 'expectedPlain.txt'],
   ['yml', 'plain', 'expectedPlain.txt'],
+  ['json', 'json', 'expectedJson.txt'],
+  ['yml', 'json', 'expectedJson.txt'],
 ];
 
 describe('test genDiff, each case in order', () => {
   test.each(cases)(
-    'files in type %p formatted in %p and expected to be as %p',
+    'files of type %p formatted in %p and expected to be as %p',
     (type, format, expectedResult) => {
       const file1 = getFixturePath(`file1.${type}`);
       const file2 = getFixturePath(`file2.${type}`);
