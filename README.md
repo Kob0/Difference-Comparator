@@ -7,17 +7,42 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2b18d18d92f206779782/test_coverage)](https://codeclimate.com/github/Kob0/frontend-project-lvl2/test_coverage)
 
-To see difference of two 'json' files - just type in console **gendiff  [json-path1] [json-path2]**!
+Here is a simple comparator of two files in 'json' or 'yml' extensions.
 
-[![asciicast](https://asciinema.org/a/l3qWwi0m6rJXiVZlAyMCVyg9R.svg)](https://asciinema.org/a/l3qWwi0m6rJXiVZlAyMCVyg9R)
+## Setup
 
-To see difference of two 'yaml' files - just type in console **gendiff [yaml-path1] [yaml-path2]**!
+```sh
+$ make start
+```
+## Run tests
+```sh
+$ make test
+```
+## View help information
+```sh
+$ gendiff -h
+```
 
-[![asciicast](https://asciinema.org/a/lKTwBxG2F51JCObh4Uhm21Joh.svg)](https://asciinema.org/a/lKTwBxG2F51JCObh4Uhm21Joh)
+## Simple usage with json:
+[![asciicast](https://asciinema.org/a/t7q2Qy5cP9Sywi09bxEKfVXB3.svg)](https://asciinema.org/a/t7q2Qy5cP9Sywi09bxEKfVXB3)
 
-To see difference of two 'ini' files - just type in console **gendiff [ini-path1] [ini-path2]**!
+## Simple usage with yml:
+[![asciicast](https://asciinema.org/a/G7CK2Zc4JXBKThSxEp1lZF86B.svg)](https://asciinema.org/a/G7CK2Zc4JXBKThSxEp1lZF86B)
 
-[![asciicast](https://asciinema.org/a/VFqSrugGebHMPQIJolhwTE5hM.svg)](https://asciinema.org/a/VFqSrugGebHMPQIJolhwTE5hM)
-=======
+This app also have various output formats:
+
+## Stylish:
+[![asciicast](https://asciinema.org/a/ONymNzVbAih7vYHIJVLAbPsXD.svg)](https://asciinema.org/a/ONymNzVbAih7vYHIJVLAbPsXD)
+
+## Plain:
+[![asciicast](https://asciinema.org/a/LCLvH8rVy0xOHkHvF6WtLrcqn.svg)](https://asciinema.org/a/LCLvH8rVy0xOHkHvF6WtLrcqn)
+
+## Json:
+[![asciicast](https://asciinema.org/a/WmwSxk1mN0PKIg1VRwTEAvk9S.svg)](https://asciinema.org/a/WmwSxk1mN0PKIg1VRwTEAvk9S)
+
+
+
+
+
 
 
