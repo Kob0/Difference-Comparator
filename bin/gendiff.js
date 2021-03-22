@@ -12,8 +12,7 @@ const genDiff = program
   .option('-f, --format [type]', 'choose output format: stylish | plain | json', 'stylish')
   .action((filepath1, filepath2) => {
     console.log(getDiff(filepath1, filepath2, program.format));
-  });
-
-program.parse(process.argv);
+  })
+  .parse();
 
 export default genDiff;
