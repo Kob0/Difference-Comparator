@@ -10,12 +10,7 @@ const genDiff = program
   .description('Compares two configuration files and shows a difference.')
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format [type]', 'choose output format: stylish | plain | json', 'stylish')
-  .action((filepath1, filepath2) => {
-    const result = getDiff(filepath1, filepath2, program.format);
-    console.log();
-    console.log(result);
-    console.log();
-  })
+  .action((filepath1, filepath2) => console.log(getDiff(filepath1, filepath2, program.format)))
   .parse();
 
 export default genDiff;
