@@ -11,5 +11,5 @@ const genDiff = program
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format [type]', 'choose output format: stylish | plain | json', 'stylish')
   .action((filepath1, filepath2) => console.log(getDiff(filepath1, filepath2, program.format)))
-  .parse(process.action);
+  .parse(process.argv);
 export default genDiff;
