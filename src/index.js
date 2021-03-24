@@ -4,8 +4,10 @@ import path from 'path';
 import parse from './parsers.js';
 import format from './formatters/index.js';
 
+const getAllKeys = (object1, object2) => _.union(Object.keys(object1), Object.keys(object2)).sort();
+
 const makeDiff = (obj1, obj2) => {
-  const keys = _.union(Object.keys(obj1), Object.keys(obj2));
+  const keys = getAllKeys(obj1, obj2);
   return keys.map((key) => {
     if (!_.has(obj1, key)) {
       return { name: key, status: 'added', value: obj2[key] };
