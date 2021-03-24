@@ -5,7 +5,7 @@ import getDiff from '../src/index.js';
 
 const program = commander.createCommand();
 
-const genDiff = program
+program
   .version('0.0.1')
   .description('Compares two configuration files and shows a difference.')
   .arguments('<filepath1> <filepath2>')
@@ -13,4 +13,3 @@ const genDiff = program
   .action((filepath1, filepath2) => console.log(getDiff(filepath1, filepath2, program.format)));
 
 program.parse(process.argv);
-export default genDiff;
