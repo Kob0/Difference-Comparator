@@ -13,6 +13,7 @@ Here is a simple comparator of two files in 'json' or 'yml' extensions.
 
 ```sh
 $ make start
+$ npm link
 ```
 ## Run tests
 ```sh
