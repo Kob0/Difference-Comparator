@@ -14,12 +14,12 @@ export default (diff) => {
   const iter = (data, path) => data
     .flatMap((item) => {
       const {
-        name, status, value, children, value1, value2,
+        name, nodeType, value, children, value1, value2,
       } = item;
 
       const newPath = `${path}.${name}`;
 
-      switch (status) {
+      switch (nodeType) {
         case 'added':
           return `Property '${newPath.slice(1)}' was added with value: ${formatValue(value)}`;
         case 'deleted':
@@ -31,7 +31,7 @@ export default (diff) => {
         case 'modified':
           return `Property '${newPath.slice(1)}' was updated. From ${formatValue(value1)} to ${formatValue(value2)}`;
         default:
-          return `Unknown status: ${status}!`;
+          return `Unknown node type: ${nodeType}!`;
       }
     });
   return iter(diff, '').join('\n');
