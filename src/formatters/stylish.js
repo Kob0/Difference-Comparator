@@ -8,9 +8,9 @@ const getFormat = (value) => {
 
   return keys.map((key) => {
     if (!_.isObject(value[key])) {
-      return { name: key, status: 'unknown', children: value[key] };
+      return { name: key, nodeType: 'unknown', children: value[key] };
     }
-    return { name: key, status: 'unknown', children: getFormat(value[key]) };
+    return { name: key, nodeType: 'unknown', children: getFormat(value[key]) };
   });
 };
 
@@ -18,7 +18,7 @@ export default (diff) => {
   const iter = (data, depth) => data
     .flatMap((item) => {
       const {
-        name, status, value, oldValue, newValue, children,
+        name, nodeType, value, value1, value2, children,
       } = item;
       const space = ' ';
       const defaultIndent = space.repeat(4);
@@ -30,7 +30,7 @@ export default (diff) => {
 
       const format = (val) => chooseIndent(getFormat(val));
 
-      switch (status) {
+      switch (nodeType) {
         case 'added':
           return `${indent2}+ ${name}: ${format(value)}`;
         case 'deleted':
@@ -41,11 +41,11 @@ export default (diff) => {
           return `${indent1}${name}: ${format(value)}`;
         case 'modified':
           return [
-            `${indent2}- ${name}: ${format(oldValue)}`,
-            `${indent2}+ ${name}: ${format(newValue)}`,
+            `${indent2}- ${name}: ${format(value1)}`,
+            `${indent2}+ ${name}: ${format(value2)}`,
           ];
         default:
-          throw new Error(`Unknown status: ${status}!`);
+          throw new Error(`Unknown node type: ${nodeType}!`);
       }
     });
   return `{\n${iter(diff, 0).join('\n')}\n}`;
