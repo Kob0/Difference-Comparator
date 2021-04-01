@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const formatValue = (val) => {
+const stringify = (val) => {
   if (_.isObject(val)) {
     return '[complex value]';
   }
@@ -21,7 +21,7 @@ export default (diff) => {
 
       switch (nodeType) {
         case 'added':
-          return `Property '${newPath.slice(1)}' was added with value: ${formatValue(value)}`;
+          return `Property '${newPath.slice(1)}' was added with value: ${stringify(value)}`;
         case 'deleted':
           return `Property '${newPath.slice(1)}' was removed`;
         case 'unknown':
@@ -29,7 +29,7 @@ export default (diff) => {
         case 'unmodified':
           return [];
         case 'modified':
-          return `Property '${newPath.slice(1)}' was updated. From ${formatValue(value1)} to ${formatValue(value2)}`;
+          return `Property '${newPath.slice(1)}' was updated. From ${stringify(value1)} to ${stringify(value2)}`;
         default:
           throw new Error(`Unknown node type: ${nodeType}!`);
       }
