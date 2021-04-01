@@ -1,6 +1,6 @@
 
 # Frontend project lvl2
-### Hexlet tests and linter status:
+### Hexlet tests and linting status:
 [![Actions Status](https://github.com/Kob0/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Kob0/frontend-project-lvl2/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/33b3feebc82f53696dd8/maintainability)](https://codeclimate.com/github/Kob0/frontend-project-lvl2/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/33b3feebc82f53696dd8/test_coverage)](https://codeclimate.com/github/Kob0/frontend-project-lvl2/test_coverage)
