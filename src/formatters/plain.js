@@ -17,19 +17,20 @@ export default (diff) => {
         name, nodeType, value, children, value1, value2,
       } = item;
 
-      const newPath = `${path}.${name}`;
+      const newPath = [...path, name];
+      const fullPath = newPath.join('.');
 
       switch (nodeType) {
         case 'added':
-          return `Property '${newPath.slice(1)}' was added with value: ${stringify(value)}`;
+          return `Property '${fullPath}' was added with value: ${stringify(value)}`;
         case 'deleted':
-          return `Property '${newPath.slice(1)}' was removed`;
+          return `Property '${fullPath}' was removed`;
         case 'unknown':
           return iter(children, newPath);
         case 'unmodified':
           return [];
         case 'modified':
-          return `Property '${newPath.slice(1)}' was updated. From ${stringify(value1)} to ${stringify(value2)}`;
+          return `Property '${fullPath}' was updated. From ${stringify(value1)} to ${stringify(value2)}`;
         default:
           throw new Error(`Unknown node type: ${nodeType}!`);
       }
