@@ -21,10 +21,12 @@ export default (diff) => {
         name, nodeType, value, value1, value2, children,
       } = item;
       const space = ' ';
-      const defaultIndent = space.repeat(4);
-      const defaultIndent2 = space.repeat(2);
-      const indent1 = defaultIndent + space.repeat(depth * 4);
-      const indent2 = defaultIndent2 + space.repeat(depth * 4);
+      const initialIndentSize = 4;
+      const indentSize = 2;
+      const defaultIndent = space.repeat(initialIndentSize);
+      const defaultIndent2 = space.repeat(indentSize);
+      const indent1 = defaultIndent + space.repeat(depth * initialIndentSize);
+      const indent2 = defaultIndent2 + space.repeat(depth * initialIndentSize);
 
       const chooseIndent = (v) => (Array.isArray(v) ? `{\n${iter(v, depth + 1).join('\n')}\n${indent1}}` : v);
 
