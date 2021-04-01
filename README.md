@@ -3,9 +3,9 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Kob0/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Kob0/frontend-project-lvl2/actions)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/2b18d18d92f206779782/maintainability)](https://codeclimate.com/github/Kob0/frontend-project-lvl2/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/33b3feebc82f53696dd8/maintainability)](https://codeclimate.com/github/Kob0/frontend-project-lvl2/maintainability)
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/169c1f19019aba0b5499/test_coverage)](https://codeclimate.com/github/Kob0/frontend-project-lvl1/test_coverage)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/33b3feebc82f53696dd8/test_coverage)](https://codeclimate.com/github/Kob0/frontend-project-lvl2/test_coverage)
 
 Here is a simple comparator of two files in 'json' or 'yml' extensions.
 
