@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const getFormat = (value) => {
+const stringify = (value) => {
   if (!_.isObject(value)) {
     return value;
   }
@@ -10,7 +10,7 @@ const getFormat = (value) => {
     if (!_.isObject(value[key])) {
       return { name: key, nodeType: 'unknown', children: value[key] };
     }
-    return { name: key, nodeType: 'unknown', children: getFormat(value[key]) };
+    return { name: key, nodeType: 'unknown', children: stringify(value[key]) };
   });
 };
 
@@ -28,7 +28,7 @@ export default (diff) => {
 
       const chooseIndent = (v) => (Array.isArray(v) ? `{\n${iter(v, depth + 1).join('\n')}\n${indent1}}` : v);
 
-      const format = (val) => chooseIndent(getFormat(val));
+      const format = (val) => chooseIndent(stringify(val));
 
       switch (nodeType) {
         case 'added':
