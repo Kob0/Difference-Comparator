@@ -3,6 +3,9 @@ start:
 		
 publish: 
 		npm publish --dry-run
+	
+link:
+		npm link
 
 test-coverage:
 	npm test -- --coverage --coverageProvider=v8
