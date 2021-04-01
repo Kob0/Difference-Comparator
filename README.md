@@ -5,7 +5,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/2b18d18d92f206779782/maintainability)](https://codeclimate.com/github/Kob0/frontend-project-lvl2/maintainability)
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/2b18d18d92f206779782/test_coverage)](https://codeclimate.com/github/Kob0/frontend-project-lvl2/test_coverage)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/169c1f19019aba0b5499/test_coverage)](https://codeclimate.com/github/Kob0/frontend-project-lvl1/test_coverage)
 
 Here is a simple comparator of two files in 'json' or 'yml' extensions.
 
