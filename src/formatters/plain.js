@@ -31,7 +31,7 @@ export default (diff) => {
         case 'modified':
           return `Property '${newPath.slice(1)}' was updated. From ${formatValue(value1)} to ${formatValue(value2)}`;
         default:
-          return `Unknown node type: ${nodeType}!`;
+          throw new Error(`Unknown node type: ${nodeType}!`);
       }
     });
   return iter(diff, '').join('\n');
