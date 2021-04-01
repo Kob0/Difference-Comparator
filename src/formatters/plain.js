@@ -28,12 +28,13 @@ export default (diff) => {
         case 'unknown':
           return iter(children, newPath);
         case 'unmodified':
-          return [];
+          return null;
         case 'modified':
           return `Property '${fullPath}' was updated. From ${stringify(value1)} to ${stringify(value2)}`;
         default:
           throw new Error(`Unknown node type: ${nodeType}!`);
       }
     });
-  return iter(diff, '').join('\n');
+  const result = iter(diff, '');
+  return result.filter((val) => val !== null).join('\n');
 };
