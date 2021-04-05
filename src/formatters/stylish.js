@@ -1,54 +1,59 @@
 import _ from 'lodash';
 
-const stringify = (value) => {
-  if (!_.isObject(value)) {
-    return value;
-  }
-  const keys = _.keys(value);
+const spacesCount = 4;
+const nodeKeyOffset = 2;
+const indentSymbol = ' ';
+const openSymbol = '{';
+const closeSymbol = '}';
 
-  return keys.map((key) => {
-    if (!_.isObject(value[key])) {
-      return { name: key, nodeType: 'unknown', children: value[key] };
-    }
-    return { name: key, nodeType: 'unknown', children: stringify(value[key]) };
-  });
+const stringify = (value, depth) => {
+  if (!_.isObject(value)) {
+    return `${value}`;
+  }
+  const indentSize = depth * spacesCount;
+  const keyIndent = indentSymbol.repeat(indentSize);
+  const bracketIndent = indentSymbol.repeat(indentSize - spacesCount);
+  const lines = Object.entries(value)
+    .flatMap(([key, val]) => `${keyIndent}${key}: ${stringify(val, depth + 1)}`);
+
+  return [
+    openSymbol,
+    ...lines,
+    `${bracketIndent}${closeSymbol}`,
+  ].join('\n');
 };
 
-export default (diff) => {
-  const iter = (data, depth) => data
-    .flatMap((item) => {
+const formatStylish = (diffTree) => {
+  const iter = (tree, depth) => {
+    const indentSize = depth * spacesCount;
+    const keyIndent = indentSymbol.repeat(indentSize - nodeKeyOffset);
+    const bracketIndent = indentSymbol.repeat(indentSize - spacesCount);
+    const lines = tree.flatMap((item) => {
       const {
-        name, nodeType, value, value1, value2, children,
+        name, value, nodeType, children, value1, value2,
       } = item;
-      const space = ' ';
-      const initialIndentSize = 4;
-      const indentSize = 2;
-      const defaultIndent = space.repeat(initialIndentSize);
-      const defaultIndent2 = space.repeat(indentSize);
-      const indent1 = defaultIndent + space.repeat(depth * initialIndentSize);
-      const indent2 = defaultIndent2 + space.repeat(depth * initialIndentSize);
-
-      const chooseIndent = (v) => (Array.isArray(v) ? `{\n${iter(v, depth + 1).join('\n')}\n${indent1}}` : v);
-
-      const format = (val) => chooseIndent(stringify(val));
 
       switch (nodeType) {
         case 'added':
-          return `${indent2}+ ${name}: ${format(value)}`;
+          return [`${keyIndent}+ ${name}: ${stringify(value, depth + 1)}`];
         case 'deleted':
-          return `${indent2}- ${name}: ${format(value)}`;
+          return [`${keyIndent}- ${name}: ${stringify(value, depth + 1)}`];
         case 'unknown':
-          return `${indent1}${name}: ${chooseIndent(children)}`;
+          return [`${keyIndent}  ${name}: ${iter(children, depth + 1)}`];
         case 'unmodified':
-          return `${indent1}${name}: ${format(value)}`;
+          return [`${keyIndent}  ${name}: ${stringify(value, depth + 1)}`];
         case 'modified':
           return [
-            `${indent2}- ${name}: ${format(value1)}`,
-            `${indent2}+ ${name}: ${format(value2)}`,
+            `${keyIndent}- ${name}: ${stringify(value1, depth + 1)}`,
+            `${keyIndent}+ ${name}: ${stringify(value2, depth + 1)}`,
           ];
         default:
-          throw new Error(`Unknown node type: ${nodeType}!`);
+          throw new Error(`Unknown nodeType: ${nodeType}!`);
       }
     });
-  return `{\n${iter(diff, 0).join('\n')}\n}`;
+    return [openSymbol, ...lines, `${bracketIndent}${closeSymbol}`].join('\n');
+  };
+  return iter(diffTree, 1);
 };
+
+export default formatStylish;
