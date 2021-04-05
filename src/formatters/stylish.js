@@ -1,54 +1,59 @@
 import _ from 'lodash';
 
-const stringify = (value) => {
-  if (!_.isObject(value)) {
-    return value;
-  }
-  const keys = _.keys(value);
-
-  return keys.map((key) => {
-    if (!_.isObject(value[key])) {
-      return { name: key, nodeType: 'unknown', children: value[key] };
+const stringify = (value, spacesCount = 4) => {
+  const iter = (currentValue, depth) => {
+    if (!_.isObject(currentValue)) {
+      return currentValue;
     }
-    return { name: key, nodeType: 'unknown', children: stringify(value[key]) };
-  });
+    const space = ' ';
+    const indentSize = depth * spacesCount;
+    const currentIndent = space.repeat(indentSize);
+    const bracketIndent = space.repeat(indentSize - spacesCount);
+    const lines = Object.entries(currentValue).map(([key, val]) => `${currentIndent}${key}: ${iter(val, depth + 1)}`);
+    return [
+      '{',
+      ...lines,
+      `${bracketIndent}}`,
+    ].join('\n');
+  };
+  return iter(value, 1);
 };
 
-export default (diff) => {
-  const iter = (data, depth) => data
-    .flatMap((item) => {
+export default (diff, spacesCount = 4) => {
+  const iter = (data, depth) => {
+    const space = ' ';
+    const displacementSize = 2;
+    const indentSize = depth * spacesCount;
+    const keyIndent = space.repeat(indentSize - displacementSize);
+    const bracketIndent = space.repeat(indentSize - spacesCount);
+    const lines = data.flatMap((item) => {
       const {
-        name, nodeType, value, value1, value2, children,
+        name, value, nodeType, children, value1, value2,
       } = item;
-      const space = ' ';
-      const initialIndentSize = 4;
-      const indentSize = 2;
-      const defaultIndent = space.repeat(initialIndentSize);
-      const defaultIndent2 = space.repeat(indentSize);
-      const indent1 = defaultIndent + space.repeat(depth * initialIndentSize);
-      const indent2 = defaultIndent2 + space.repeat(depth * initialIndentSize);
-
-      const chooseIndent = (v) => (Array.isArray(v) ? `{\n${iter(v, depth + 1).join('\n')}\n${indent1}}` : v);
-
-      const format = (val) => chooseIndent(stringify(val));
 
       switch (nodeType) {
         case 'added':
-          return `${indent2}+ ${name}: ${format(value)}`;
+          return `${keyIndent}+ ${name}: ${stringify(value)}`;
         case 'deleted':
-          return `${indent2}- ${name}: ${format(value)}`;
+          return `${keyIndent}- ${name}: ${stringify(value)}`;
         case 'unknown':
-          return `${indent1}${name}: ${chooseIndent(children)}`;
+          return `${keyIndent}  ${name}: ${iter(children, depth + 1)}`;
         case 'unmodified':
-          return `${indent1}${name}: ${format(value)}`;
+          return `${keyIndent}  ${name}: ${stringify(value)}`;
         case 'modified':
           return [
-            `${indent2}- ${name}: ${format(value1)}`,
-            `${indent2}+ ${name}: ${format(value2)}`,
+            `${keyIndent}- ${name}: ${stringify(value1)}`,
+            `${keyIndent}+ ${name}: ${stringify(value2)}`,
           ];
         default:
-          throw new Error(`Unknown node type: ${nodeType}!`);
+          throw new Error(`Unknown nodeType: ${nodeType}!`);
       }
     });
-  return `{\n${iter(diff, 0).join('\n')}\n}`;
+    return [
+      '{',
+      ...lines,
+      `${bracketIndent}}`,
+    ].join('\n');
+  };
+  return iter(diff, 1);
 };
